@@ -1,0 +1,16 @@
+lat,lag,name,city,country,email,phone_number,classic_room_price,queen_room_price,king_room_price,suite_price,max_guests
+34.0522,-118.2437,Hotel A,Los Angeles,USA,hotel_a@example.com,+1 123-456-7890,80,120,150,250,500
+40.7128,-74.006,Hotel B,New York,USA,hotel_b@example.com,+1 234-567-8901,100,150,180,300,800
+51.5099,-0.118,Hotel C,London,UK,hotel_c@example.com,+44 20 1234 5678,90,130,160,280,600
+48.8566,2.3522,Hotel D,Paris,France,hotel_d@example.com,+33 1 23 45 67 89,110,160,200,350,700
+35.6895,139.6917,Hotel E,Tokyo,Japan,hotel_e@example.com,+81 3 4567 8901,95,140,170,280,450
+37.7749,-122.4194,Hotel F,San Francisco,USA,hotel_f@example.com,+1 345-678-9012,85,130,160,270,550
+40.4168,-3.7038,Hotel G,Madrid,Spain,hotel_g@example.com,+34 91 234 5678,80,120,150,250,400
+41.9028,12.4964,Hotel H,Rome,Italy,hotel_h@example.com,+39 06 7890 1234,100,150,180,300,900
+31.5497,74.3436,Hotel I,Lahore,Pakistan,hotel_i@example.com,+92 300 1234567,70,110,140,230,300
+22.5726,88.3639,Hotel J,Kolkata,India,hotel_j@example.com,+91 98765 43210,75,115,145,240,350
+-33.8688,151.2093,Hotel K,Sydney,Australia,hotel_k@example.com,+61 2 3456 7890,120,180,220,380,1000
+55.7558,37.6176,Hotel L,Moscow,Russia,hotel_l@example.com,+7 495 123-45-67,90,130,160,270,550
+37.5665,126.978,Hotel M,Seoul,South Korea,hotel_m@example.com,+82 2 3456 7890,95,140,170,280,600
+31.2304,121.4737,Hotel N,Shanghai,China,hotel_n@example.com,+86 21 1234 5678,110,160,200,350,700
+-33.9258,18.4232,Hotel O,Cape Town,South Africa,hotel_o@example.com,+27 21 345 6789,80,120,150,250,500

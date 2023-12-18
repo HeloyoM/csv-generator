@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="[https://nestjs.com/img/logo-small.svg](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.teamdesk.net%2Fblog%2Fwhats-new%2Fcallurl-webhooks-support-csv%2F&psig=AOvVaw2buAEopMa8XAHaq6cwZmXT&ust=1702999734637000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJj_hsammYMDFQAAAAAdAAAAABAD)" width="200" alt="Nest Logo" /></a>
+  <img src="https://www.teamdesk.net/blog/wp-content/uploads/2022/02/csv-td.png" width="200" />
 </p>
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456

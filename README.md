@@ -3,7 +3,7 @@
 </p>
 
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+  <p align="center">Just provied csv file location on your machine and create mysql table with all required cloumns  </p>
 
 ## Installation
 
@@ -27,4 +27,4 @@ $ npm run start:prod
 ## Stay in touch
 
 - Author - Meir Juli
-- Twitter - [@linkedin](www.linkedin.com/in/meir-juli-a301a5197
+- Linkedin - [@linkedin](www.linkedin.com/in/meir-juli-a301a5197

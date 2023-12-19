@@ -1,7 +1,7 @@
 export function getMySQLCloumns(cloumns: string[], data: any[]) {
     const columnsStringArray: string[] = []
 
-    const t = cloumns.reduce((acc, crr: string, index: number) => {
+    cloumns.reduce((acc, crr: string, index: number) => {
         const d = data[index]
         let datatype = ''
 
@@ -16,10 +16,10 @@ export function getMySQLCloumns(cloumns: string[], data: any[]) {
                     datatype = `MEDIUMINT`
                 } else if (d >= -2147483648 && d <= 2147483647) {
                     datatype = `INT`
-                } else if (d >= -9223372036854775808 && d <= 9223372036854775807) {
+                } else if (d >= -9223372036854775808n && d <= 9223372036854775807n) {
                     datatype = `BIGINT`
                 } else {
-                    return `Value of ${d} is out of range for MySQL integer types. donsider to convert it to string`
+                    return `Value of ${d} is out of range for MySQL integer types. Consider to convert it to string`
                 }
             } else {
                 return `double`
@@ -28,11 +28,12 @@ export function getMySQLCloumns(cloumns: string[], data: any[]) {
             datatype = `boolean`
         } else if (typeof d === 'string') {
             if (isUUID(d)) datatype = `varchar(36)`
+            
             else datatype = `varchar(255)`
         }
 
         columnsStringArray.push(`${crr} ${datatype} NOT NULL `)
-        return { ...acc, [crr]: data[index] }
+        
     }, {})
     return columnsStringArray.join(',\n')
 }

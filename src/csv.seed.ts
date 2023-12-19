@@ -1,21 +1,23 @@
 import { readFileSync } from "fs"
 import * as path from "path"
+import { ParsedPath } from "path"
 import { convertArrayString, getMySQLCloumns } from "src/utils/datatype"
 import { QueryRunner } from "typeorm"
 
 export class CsvSeed {
+    private columns: string[]
+    private array: string[]
+    private fileName: ParsedPath
+
+    constructor() {
+        this.array = this.getCsvFile()
+    }
+
     public async up(queryRunner: QueryRunner) {
-        const file = path.join(__dirname, '../ csv-files/hotels.csv')
 
-        const fileName = path.parse(file)
+        this.columns = this.array[0].split(',')
 
-        const csv = readFileSync(file, 'utf-8')
-
-        const array = csv.toString().split('\r')
-
-        const columns = array[0].split(',')
-
-        const dataArray = array.slice(1, -1)
+        const dataArray = this.array.slice(1, -1)
 
         const data = dataArray.map((u) => u.split(","))
 
@@ -26,16 +28,30 @@ export class CsvSeed {
 
         let cols = ''
         for (const data of convertedData) {
-            cols = getMySQLCloumns(columns, data)
+            cols = getMySQLCloumns(this.columns, data)
         }
-        const result = cols.split(',').join(',');
+        const result = cols.split(',').join(',')
 
         try {
-            await queryRunner.query(`CREATE TABLE IF NOT EXISTS ${fileName.name} (${result})`)
+            await queryRunner.query(`CREATE TABLE IF NOT EXISTS ${this.fileName.name} (${result})`)
         } catch (error) {
-            console.log(error)
             throw Error(error)
         }
+
+        await queryRunner.release()
+    }
+
+    private getCsvFile(): string[] {
+        const file = path.join(__dirname, '../csv-files/hotels.csv') // set location csv-file
+
+        if (!file.trim())
+            throw Error('Empty file. Check again csv file location')
+
+        this.fileName = path.parse(file)
+
+        const csv = readFileSync(file, 'utf-8')
+
+        return csv.toString().split('\r')
     }
 
     public async down() { }

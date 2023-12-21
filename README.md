@@ -6,6 +6,7 @@
   This tool is very useful, in my opinion, whether it is to introduce new users to the system,  or new products to the e-commerce system. Someday, you will meet with annoying <img src="https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/719IQp4yPuL._SX522_.jpg" width=35 height=35 /> CSV files that need to map the data in them and other.
 <hr/>
  All you have to do is: <ul>
+   <li>Connect to MySql on your project in product env or on localhost machine</li>
    <li>Give a name to the csv file that you want to upload as its name in MySql schema</li>
    <li>Set the location of the csv file on your machine</li>
  </ul> 

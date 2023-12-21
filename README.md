@@ -9,10 +9,9 @@
    <li>Give a name to the csv file that you want to upload as its name in MySql schema</li>
    <li>Set the location of the csv file on your machine</li>
  </ul> 
- and, with fast optimization, everything is pushed to the database at enormous speed
-</p
-  <p align="center">Just provied csv file location on your machine and create mysql table with all required cloumns  </p>
-  <p align="center" style={color:'red'}> And will insert the data too!!</p>
+</p>
+  <p align="center" style={color:'red'}>and, with fast optimization, it's will create new schema (IF NOT EXISTS) and insert the data too!!</p>
+  <p align="center" font-size="22px"> Incredible </p>
   <a href="https://www.linkedin.com/in/meir-juli-a301a5197" target="_blank"><img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-512.png" width=25 height=25 /></a> Follow me in <span>Linkedin</span>
 
 ## Installation

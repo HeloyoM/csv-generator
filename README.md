@@ -26,7 +26,7 @@
 - Linkedin -
   <p><a href="https://www.linkedin.com/in/meir-juli-a301a5197" target="_blank"><img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-512.png" width=25 height=25 /></a> Send a connect request</p>
 https://img.youtube.com/vi/<VIDEO ID>/maxresdefault.jpg
-[<img src="https://www.youtube.com/watch?v=1F5RH_8q1Po" width="50%">](https://youtu.be/1F5RH_8q1Po)
+[![Video Title](https://www.youtube.com/watch?v=1F5RH_8q1Po)](https://www.youtube.com/watch?v=1F5RH_8q1Po)
 
 ## Installation
 

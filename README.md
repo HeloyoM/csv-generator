@@ -39,4 +39,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 ## Technologies
-
+```bash
+# NestJs - A progressive Node.js framework for building efficient and scalable server-side applications.
+# Typeorm - Object-to-Object mapping Typescript framework 
+```

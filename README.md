@@ -15,7 +15,7 @@
   <p align="center" font-size="22px"> Amazing ! ! ! </p>
 
   ## About the code
-  If you have a sensitive eye you will notice that I applied: 
+  <p>If you have a sensitive eye you will notice that I applied:</p> 
     - SOLID priciples in the logic layer
     - DAG priciple 
   

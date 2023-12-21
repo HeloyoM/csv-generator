@@ -3,9 +3,9 @@
 </p>
 
 <p align="center">
-  This tool is very useful, in my opinion, whether it is to introduce new users to the system,  or new products to the e-commerce system. Someday, you will meet with annoying <img src="https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/719IQp4yPuL._SX522_.jpg" width=35 height=35 /> csv files that need to map the data in them and other.
-
-All you have to do is give a name to the csv file that you want to upload as its name in mysql server, and with fast optimization everything is pushed to the database at enormous speed
+  This tool is very useful, in my opinion, whether it is to introduce new users to the system,  or new products to the e-commerce system. Someday, you will meet with annoying <img src="https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/719IQp4yPuL._SX522_.jpg" width=35 height=35 /> CSV files that need to map the data in them and other.
+<hr/>
+ All you have to do is give a name to the csv file that you want to upload as its name in mysql schema, and, with fast optimization, everything is pushed to the database at enormous speed
 </p
   <p align="center">Just provied csv file location on your machine and create mysql table with all required cloumns  </p>
   <p align="center" style={color:'red'}> And will insert the data too!!</p>

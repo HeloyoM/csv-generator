@@ -16,8 +16,8 @@
 
   ## About the code
   <p>If you have a sensitive eye you will notice that I applied:</p> 
-    - SOLID priciples in the logic layer
-    - DAG priciple 
+    <p>- SOLID priciples in the logic layer</p>
+    <p>- DAG priciple</p> 
   
   ## Stay in touch
 

@@ -4,7 +4,7 @@
 
 
   <p align="center">Just provied csv file location on your machine and create mysql table with all required cloumns  </p>
-  <p align="center"> And will insert the data too!!</p>
+  <p align="center" style={{color: 'red'}}> And will insert the data too!!</p>
 
 ## Installation
 

@@ -10,7 +10,7 @@
    <li>Set the location of the csv file on your machine</li>
  </ul> 
 </p>
-  <p align="center" style={color:'red'}>and, with fast optimization, it's will create new schema (IF NOT EXISTS) and insert the data too!!</p>
+  <p align="center" style={color:'red'}>and, with fast optimization, it's will create new schema (IF NOT EXISTS) and insert the data too in one GO!!</p>
   <p align="center" font-size="22px"> Amazing ! ! ! </p>
   
   ## Stay in touch

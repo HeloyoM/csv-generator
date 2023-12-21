@@ -1,4 +1,4 @@
-lat,lag,name,city,country,email,phone_number,classic_room_price,queen_room_price,king_room_price,suite_price,max_guests
+longitude,latitude,name,city,country,email,phone_number,classic_room_price,queen_room_price,king_room_price,suite_price,max_guests
 34.0522,-118.2437,Hotel A,Los Angeles,USA,hotel_a@example.com,+1 123-456-7890,80,120,150,250,500
 40.7128,-74.006,Hotel B,New York,USA,hotel_b@example.com,+1 234-567-8901,100,150,180,300,800
 51.5099,-0.118,Hotel C,London,UK,hotel_c@example.com,+44 20 1234 5678,90,130,160,280,600

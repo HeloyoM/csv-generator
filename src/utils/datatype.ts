@@ -8,13 +8,7 @@ export function getMySQLCloumns(cloumns: string[], data: any[]) {
         if (typeof d === 'number') {
 
             if (Number.isInteger(d)) {
-                if (d >= -128 && d <= 127) {
-                    datatype = `TINYINT`
-                } else if (d >= -32768 && d <= 32767) {
-                    datatype = `SMALLINT`
-                } else if (d >= -8388608 && d <= 8388607) {
-                    datatype = `MEDIUMINT`
-                } else if (d >= -2147483648 && d <= 2147483647) {
+                if (d >= -128 && d <= 2147483647) {
                     datatype = `INT`
                 } else if (d >= -9223372036854775808n && d <= 9223372036854775807n) {
                     datatype = `BIGINT`
@@ -22,18 +16,18 @@ export function getMySQLCloumns(cloumns: string[], data: any[]) {
                     return `Value of ${d} is out of range for MySQL integer types. Consider to convert it to string`
                 }
             } else {
-                return `double`
+                datatype = `varchar(255)`
             }
         } else if (typeof d === 'boolean') {
             datatype = `boolean`
         } else if (typeof d === 'string') {
             if (isUUID(d)) datatype = `varchar(36)`
-            
+
             else datatype = `varchar(255)`
         }
 
         columnsStringArray.push(`${crr} ${datatype} NOT NULL `)
-        
+
     }, {})
     return columnsStringArray.join(',\n')
 }

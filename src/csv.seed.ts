@@ -18,10 +18,12 @@ export class CsvSeed {
             this.getCsvFile()
 
             try {
-                await this.createTable(queryRunner)
-
-                await this.insertTableRecords(queryRunner)
-
+                if (!await this.seekExistsTable(queryRunner)) {
+                    await this.createTable(queryRunner)
+                    await this.insertTableRecords(queryRunner)
+                } else {
+                    await this.insertTableRecords(queryRunner)
+                }
             } catch (error) {
                 throw Error(error)
             }
@@ -64,34 +66,46 @@ export class CsvSeed {
     private recordsDefined(csv: string[]) {
         const recordsArray = csv.slice(1, -1)
 
-        this.records = recordsArray.map((u) => u.split(","))
+        const records = recordsArray.map((u) => u.split(","))
+        this.records = records.map(d => convertArrayString(d))
 
-        const convertedData = this.records.map(d => convertArrayString(d))
-
-        for (const data of convertedData) {
+        for (const data of this.records) {
             this.queryString = getMySQLCloumns(this.columns, data)
+        }
+    }
+    private async seekExistsTable(queryRunner: QueryRunner): Promise<boolean> {
+        try {
+            const table = await queryRunner.query(`SELECT * FROM information_schema.tables WHERE TABLE_NAME = '${this.fileName.name}'`)
+            return Boolean(table.lenght)
+        } catch (error) {
+            this.error = `${error}`
         }
     }
 
     private async createTable(queryRunner: QueryRunner) {
         try {
             const cloumnsDefinition = this.queryString.split(',').join(',')
+            console.log({ cloumnsDefinition })
             await queryRunner.query(`CREATE TABLE IF NOT EXISTS ${this.fileName.name} (${cloumnsDefinition})`)
         } catch (error) {
-
+            console.log({ error })
         }
     }
     private async insertTableRecords(queryRunner: QueryRunner) {
         try {
-            const table = await queryRunner.query(`SELECT * FROM information_schema.tables WHERE TABLE_NAME = '${this.fileName.name}'`)
-
-            if (!table.lenght) {
-                await this.createTable(queryRunner)
-            } else {
+            for (const r of this.records) {
+                try {
+                    await queryRunner.query(`
+                        INSERT INTO ${this.fileName.name} (${this.columns.join(', ')})
+                        VALUES (${r.map(value => (typeof value === 'string' ? `'${value}'` : value)).join(', ')}
+                        );`)
+                } catch (error) {
+                    throw Error(`An error occurred while saving new hotel [${JSON.stringify(r.join(', '))}]`)
+                }
 
             }
         } catch (error) {
-
+            console.log(error)
         }
     }
 

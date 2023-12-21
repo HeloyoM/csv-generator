@@ -13,6 +13,9 @@
 </p>
   <p align="center" style={color:'red'}>and, with fast optimization, it's will create new schema (IF NOT EXISTS) and insert the data too, as a seed file, in one GO!!</p>
   <p align="center" font-size="22px"> Amazing ! ! ! </p>
+
+  ##About the code
+  If you have a sensitive eye you will notice that I applied all the SOLID priciples in the logic layer.
   
   ## Stay in touch
 

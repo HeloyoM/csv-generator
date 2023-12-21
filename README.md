@@ -25,8 +25,7 @@
 - Author - Meir Juli
 - Linkedin -
   <p><a href="https://www.linkedin.com/in/meir-juli-a301a5197" target="_blank"><img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-512.png" width=25 height=25 /></a> Send a connect request</p>
-
-[![Watch the video](https://i.stack.imgur.com/Vp2cE.png)](https://www.youtube.com/watch?v=1F5RH_8q1Po)
+[![Demo CountPages alpha](https://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=1F5RH_8q1Po)
 
 ## Installation
 

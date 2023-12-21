@@ -1,6 +1,5 @@
 import { Module, Scope } from "@nestjs/common"
 import { CsvController } from "./csv.controller"
-import { TypeOrmModule } from "@nestjs/typeorm"
 import { DatabaseModule } from "src/database/database.module"
 import { CsvSeed } from "./csv.seed"
 

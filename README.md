@@ -18,6 +18,7 @@
   <p>If you have a sensitive eye you will notice that I applied:</p> 
     <p>- SOLID priciples in the logic layer</p>
     <p>- DAG priciple</p> 
+    <p>and all with clean and readable code that every child can understand</p>
   
   ## Stay in touch
 

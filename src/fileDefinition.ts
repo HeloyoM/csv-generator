@@ -5,7 +5,7 @@ export class FileDefinition {
     private records: string[][]
     private queryString: string
 
-    constructor(recordsString: string[]) {
+    constructor(recordsString: string[][]) {
         this.definedEnvtVariables(recordsString)
     }
 
@@ -21,21 +21,20 @@ export class FileDefinition {
         return this.queryString
     }
 
-    private async definedEnvtVariables(recordsString: string[]): Promise<void> {
+    private async definedEnvtVariables(recordsString: string[][]): Promise<void> {
         this.columnsDefinition(recordsString)
         this.recordsDefinition(recordsString)
         this.getQueryString()
     }
 
-    private columnsDefinition(csv: string[]): void {
-        this.columns = csv[0].split(',')
+    private columnsDefinition(csv: string[][]): void {
+        this.columns = csv[0]
     }
 
-    private recordsDefinition(csv: string[]): void {
+    private recordsDefinition(csv: string[][]): void {
         const recordsArray = csv.slice(1, -1)
-        const records = recordsArray.map((u) => u.split(","))
 
-        this.records = records.map(d => convertArrayString(d))
+        this.records = recordsArray.map(d => convertArrayString(d))
     }
 
     public getQueryString(): void {

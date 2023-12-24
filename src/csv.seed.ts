@@ -3,6 +3,7 @@ import { readFileSync } from "fs"
 import * as path from "path"
 import { ParsedPath } from "path"
 
+import { parse } from 'csv-parse/sync'
 import { FileDefinition } from "./fileDefinition"
 
 export class Main {
@@ -35,10 +36,10 @@ export class Main {
     }
 
     private async getCsvFile() {
-        const file = path.join(__dirname, '../csv-files/users.csv') // file location
+        const file = path.join(__dirname, '../csv-files/test.csv') // file location
         const csv = readFileSync(file, 'utf-8')
 
-        const recordsString = csv.toString().split('\r')
+        const records = parse(csv)
 
         if (!file.trim()) {
             this.error = 'Empty file. Check again csv file location'
@@ -47,7 +48,7 @@ export class Main {
         try {
             this.tableName(file)
 
-            this.csvDataFile = new FileDefinition(recordsString)
+            this.csvDataFile = new FileDefinition(records)
         } catch (error) {
             throw Error()
         }

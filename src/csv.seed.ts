@@ -1,15 +1,14 @@
+import { QueryRunner } from "typeorm"
 import { readFileSync } from "fs"
 import * as path from "path"
 import { ParsedPath } from "path"
-import { convertArrayString, getMySQLCloumns } from "src/utils/datatype"
-import { QueryRunner } from "typeorm"
 
-export class CsvSeed {
-    private columns: string[]
-    private records: string[][]
+import { FileDefinition } from "./fileDefinition"
+
+export class Main {
     private fileName: ParsedPath
-    private queryString: string
     private error: string
+    private csvDataFile: any
 
     constructor() { }
 
@@ -36,7 +35,7 @@ export class CsvSeed {
     }
 
     private async getCsvFile() {
-        const file = path.join(__dirname, '../csv-files/hotels.csv')
+        const file = path.join(__dirname, '../csv-files/users.csv') // file location
         const csv = readFileSync(file, 'utf-8')
 
         const recordsString = csv.toString().split('\r')
@@ -46,33 +45,18 @@ export class CsvSeed {
         }
 
         try {
-            this.getTableName(file)
+            this.tableName(file)
 
-            this.columnsDefinition(recordsString)
-            this.recordsDefined(recordsString)
+            this.csvDataFile = new FileDefinition(recordsString)
         } catch (error) {
             throw Error()
         }
     }
 
-    private getTableName(file: string): void {
+    private tableName(file: string): void {
         this.fileName = path.parse(file)
     }
 
-    private async columnsDefinition(csv: string[]): Promise<void> {
-        this.columns = csv[0].split(',')
-    }
-
-    private recordsDefined(csv: string[]) {
-        const recordsArray = csv.slice(1, -1)
-
-        const records = recordsArray.map((u) => u.split(","))
-        this.records = records.map(d => convertArrayString(d))
-
-        for (const data of this.records) {
-            this.queryString = getMySQLCloumns(this.columns, data)
-        }
-    }
     private async seekExistsTable(queryRunner: QueryRunner): Promise<boolean> {
         try {
             const table = await queryRunner.query(`SELECT * FROM information_schema.tables WHERE TABLE_NAME = '${this.fileName.name}'`)
@@ -84,23 +68,23 @@ export class CsvSeed {
 
     private async createTable(queryRunner: QueryRunner) {
         try {
-            const cloumnsDefinition = this.queryString.split(',').join(',')
-            console.log({ cloumnsDefinition })
+            const cloumnsDefinition = this.csvDataFile.queryString.split(',').join(',')
             await queryRunner.query(`CREATE TABLE IF NOT EXISTS ${this.fileName.name} (${cloumnsDefinition})`)
         } catch (error) {
             console.log({ error })
         }
     }
+
     private async insertTableRecords(queryRunner: QueryRunner) {
         try {
-            for (const r of this.records) {
+            for (const r of this.csvDataFile.records) {
                 try {
                     await queryRunner.query(`
-                        INSERT INTO ${this.fileName.name} (${this.columns.join(', ')})
-                        VALUES (${r.map(value => (typeof value === 'string' ? `'${value}'` : value)).join(', ')}
+                        INSERT INTO ${this.fileName.name} (${this.csvDataFile.columns.join(', ')})
+                        VALUES (${r.map(value => (typeof value == 'string' && value.includes("'") ? `'${value.replace(/'/g, '')}'` : `'${value}'`)).join(', ')}
                         );`)
                 } catch (error) {
-                    throw Error(`An error occurred while saving new hotel [${JSON.stringify(r.join(', '))}]`)
+                    throw Error(`An error occurred while saving new ${this.fileName.name} [${JSON.stringify(r.join(', '))}]`)
                 }
 
             }

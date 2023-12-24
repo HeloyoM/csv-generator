@@ -1,4 +1,4 @@
-id,first_name,last_name,email,gender,lat,lag,salary,timez,hair
+id,first_name,last_name,email,gender,latitude,longitude,salary,timez,hair
 1,Conrade,MacMenamie,cmacmenamie0@wired.com,Male,37.0259658,66.7784206,$3583.10,1:26 PM,#63f405
 2,Jolynn,Matusov,jmatusov1@twitter.com,Female,49.18332,-99.66364,$88961.23,8:15 PM,#6c830f
 3,Spence,Jann,sjann2@seattletimes.com,Male,6.10376,124.405998,$94157.28,1:11 PM,#10289a

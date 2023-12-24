@@ -1,4 +1,4 @@
-export function getMySQLCloumns(cloumns: string[], data: any[]) {
+export function computeMySQLCloumns(cloumns: string[], data: any[]) {
     const columnsStringArray: string[] = []
 
     cloumns.reduce((acc, crr: string, index: number) => {

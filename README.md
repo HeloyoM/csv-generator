@@ -7,7 +7,7 @@
 <hr/>
  All you have to do is: <ul>
    <li>Connect to MySql on your project in product env or on localhost machine</li>
-   <li>Give a name to the csv file that you want to upload as its name in MySql schema</li>
+   <li>Give a name to the csv file that you want to upload as its required table name in MySql schema</li>
    <li>Set the location of the csv file on your machine</li>
  </ul> 
 </p>

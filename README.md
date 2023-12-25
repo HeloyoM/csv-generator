@@ -19,14 +19,15 @@
     <p>- SOLID priciples in the logic layer</p>
     <p>- DAG priciple</p> 
     <p>and all with clean and readable code that every child can understand</p><img src="https://storage.googleapis.com/sticker-prod/NFYUpmqjfGbOHVAUydxk/cover.thumb256.png" width=40 height=40/>
+
+  [![Video Title](https://www.youtube.com/watch?v=Jwo1TUFAEsA)](https://www.youtube.com/watch?v=Jwo1TUFAEsA)
+  ## Architecture
   
   ## Stay in touch
 
 - Author - Meir Juli
 - Linkedin -
   <p><a href="https://www.linkedin.com/in/meir-juli-a301a5197" target="_blank"><img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Linkedin_unofficial_colored_svg-512.png" width=25 height=25 /></a> Send a connect request</p>
-  
-[![Video Title](https://www.youtube.com/watch?v=Jwo1TUFAEsA)](https://www.youtube.com/watch?v=Jwo1TUFAEsA)
 
 ## Installation
 

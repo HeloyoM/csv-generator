@@ -22,7 +22,7 @@
 
   [![Video Title](https://www.youtube.com/watch?v=Jwo1TUFAEsA)](https://www.youtube.com/watch?v=Jwo1TUFAEsA)
   ## Architecture
-  ![Sys architecture](https://github.com/HeloyoM/csv-transporter/assets/57059886/23b0841e-be07-42b2-a56a-fa5e969abcf2)
+  ![Sys architecture](https://github.com/HeloyoM/csv-transporter/assets/57059886/46dbf43d-edbe-40e5-a6ae-300b8092800e)
 
   ## Stay in touch
 

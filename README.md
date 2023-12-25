@@ -22,7 +22,7 @@
 
   [![YToube video](https://www.youtube.com/watch?v=Jwo1TUFAEsA)](https://github.com/HeloyoM/csv-transporter/assets/57059886/636137ea-7e9c-4ebe-8728-b88c13cf1817)
 
-  [<p>Take a look !!</p>](https://www.youtube.com/watch?v=Jwo1TUFAEsA)
+  [](https://www.youtube.com/watch?v=Jwo1TUFAEsA)
   
   ## Architecture
   ![Sys architecture](https://github.com/HeloyoM/csv-transporter/assets/57059886/46dbf43d-edbe-40e5-a6ae-300b8092800e)

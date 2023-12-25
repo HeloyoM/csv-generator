@@ -21,6 +21,8 @@
     <p>and all with clean and readable code that every child can understand</p><img src="https://storage.googleapis.com/sticker-prod/NFYUpmqjfGbOHVAUydxk/cover.thumb256.png" width=40 height=40/>
 
   [![YToube video](https://www.youtube.com/watch?v=Jwo1TUFAEsA)](https://github.com/HeloyoM/csv-transporter/assets/57059886/636137ea-7e9c-4ebe-8728-b88c13cf1817)
+
+  [<img src="https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg" width="50%">](https://www.youtube.com/watch?v=Jwo1TUFAEsA "Now in Android: 55")
   
   ## Architecture
   ![Sys architecture](https://github.com/HeloyoM/csv-transporter/assets/57059886/46dbf43d-edbe-40e5-a6ae-300b8092800e)

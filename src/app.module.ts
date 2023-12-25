@@ -4,7 +4,7 @@ import { ConfigService, ConfigModule } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm/dist/typeorm.module'
 import typeormCommon from './typeorm.config'
 import { DatabaseModule } from './database/database.module'
-import { CsvModule } from './csv.module'
+import { CsvModule } from './Csv/csv.module'
 
 @Module({
   imports: [

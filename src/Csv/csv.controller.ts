@@ -1,5 +1,5 @@
 import { Controller, Get, Inject } from '@nestjs/common'
-import db_constant from './database/constans'
+import db_constant from '../database/constans'
 import { DataSource } from 'typeorm'
 import { Main } from './csv.seed'
 

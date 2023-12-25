@@ -2,11 +2,12 @@ import { QueryRunner } from "typeorm"
 import { readFileSync } from "fs"
 import * as path from "path"
 import { ParsedPath } from "path"
-
+import { Logger } from "@nestjs/common"
 import { parse } from 'csv-parse/sync'
-import { FileDefinition } from "./fileDefinition"
+import { FileDefinition } from "./models/FileDefinition.model"
 
 export class Main {
+    private readonly logger = new Logger(Main.name)
     private fileName: ParsedPath
     private error: string
     private csvDataFile: any
@@ -15,7 +16,8 @@ export class Main {
 
     public async up(queryRunner: QueryRunner) {
         try {
-            this.getCsvFile()
+            const csv = await this.getCsvFile();
+            this.csvDataFile = new FileDefinition(csv)
 
             try {
                 if (!await this.seekExistsTable(queryRunner)) {
@@ -25,18 +27,18 @@ export class Main {
                     await this.insertTableRecords(queryRunner)
                 }
             } catch (error) {
-                throw Error(error)
+                this.logger.log(error)
             }
 
             await queryRunner.release()
 
         } catch (error) {
-            throw Error(this.error)
+            this.logger.log(this.error)
         }
     }
 
-    private async getCsvFile() {
-        const file = path.join(__dirname, '../csv-files/test.csv') // file location
+    private async getCsvFile(): Promise<any> {
+        const file = path.join(__dirname, '../../csv-files/airports.csv') // file location
         const csv = readFileSync(file, 'utf-8')
 
         const records = parse(csv)
@@ -48,9 +50,9 @@ export class Main {
         try {
             this.tableName(file)
 
-            this.csvDataFile = new FileDefinition(records)
+            return records
         } catch (error) {
-            throw Error()
+            this.logger.log(error)
         }
     }
 
@@ -69,19 +71,19 @@ export class Main {
 
     private async createTable(queryRunner: QueryRunner) {
         try {
-            const cloumnsDefinition = this.csvDataFile.queryString.split(',').join(',')
+            const cloumnsDefinition = this.csvDataFile.getQueryString()
             await queryRunner.query(`CREATE TABLE IF NOT EXISTS ${this.fileName.name} (${cloumnsDefinition})`)
         } catch (error) {
-            console.log({ error })
+            this.logger.log(error)
         }
     }
 
     private async insertTableRecords(queryRunner: QueryRunner) {
         try {
-            for (const r of this.csvDataFile.records) {
+            for (const r of this.csvDataFile.getRecords()) {
                 try {
                     await queryRunner.query(`
-                        INSERT INTO ${this.fileName.name} (${this.csvDataFile.columns.join(', ')})
+                        INSERT INTO ${this.fileName.name} (${this.csvDataFile.getColumns()})
                         VALUES (${r.map(value => (typeof value == 'string' && value.includes("'") ? `'${value.replace(/'/g, '')}'` : `'${value}'`)).join(', ')}
                         );`)
                 } catch (error) {
@@ -90,7 +92,7 @@ export class Main {
 
             }
         } catch (error) {
-            console.log(error)
+            this.logger.log(error)
         }
     }
 

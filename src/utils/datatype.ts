@@ -1,3 +1,5 @@
+import RegExpUUID from "./RegExp"
+
 export function computeMySQLCloumns(cloumns: string[], data: any[]) {
     const columnsStringArray: string[] = []
 
@@ -31,18 +33,7 @@ export function computeMySQLCloumns(cloumns: string[], data: any[]) {
     }, {})
     return columnsStringArray.join(',\n')
 }
+
 export function isUUID(value: string): boolean {
-    const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[14][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
-
-    return uuidPattern.test(value)
-}
-
-export function convertArrayString(arr: any[]): any[] {
-    const convertedArray = arr.map(element => {
-        const convertedElement = !isNaN(element) ? parseFloat(element) : element
-
-        return convertedElement
-    })
-
-    return convertedArray
+    return RegExpUUID.UUID.test(value)
 }

@@ -11,7 +11,7 @@ export class RecordsDefinition {
 
     private recordsDefinition(csv: string[][]): void {
         const recordsArray = csv.slice(1, -1)
-        
+
         this.records = recordsArray.map((d) => this.appropriateElementsType(d))
     }
 

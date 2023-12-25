@@ -1,14 +1,15 @@
 import { QueryRunner } from "typeorm"
-import { readFileSync } from "fs"
 import * as path from "path"
 import { ParsedPath } from "path"
 import { Logger } from "@nestjs/common"
-import { parse } from 'csv-parse/sync'
 import { FileDefinition } from "./models/FileDefinition.model"
+import * as ExcelJS from 'exceljs'
+import { ExcelReader } from "./models/FileTypes/ExcelReader.model"
+import { CsvReader } from "./models/FileTypes/csvReader.model"
 
 export class Main {
     private readonly logger = new Logger(Main.name)
-    private fileName: ParsedPath
+    private filePath: ParsedPath
     private error: string
     private csvDataFile: any
 
@@ -16,7 +17,8 @@ export class Main {
 
     public async up(queryRunner: QueryRunner) {
         try {
-            const csv = await this.getCsvFile();
+            const csv = await this.getFileRows()
+
             this.csvDataFile = new FileDefinition(csv)
 
             try {
@@ -37,32 +39,36 @@ export class Main {
         }
     }
 
-    private async getCsvFile(): Promise<any> {
-        const file = path.join(__dirname, '../../csv-files/airports.csv') // file location
-        const csv = readFileSync(file, 'utf-8')
+    private async getFileRows(): Promise<any> {
+        const file = path.join(__dirname, '../../csv-files/budget.xlsx') // file location
 
-        const records = parse(csv)
+        this.filePath = path.parse(file)
 
-        if (!file.trim()) {
+        let records = []
+
+        if (this.filePath.ext === '.xlsx') {
+            const excelFile = new ExcelReader()
+
+            records = await excelFile.readRecords(file)
+        } else if (this.filePath.ext === '.csv') {
+            const csvFile = new CsvReader()
+
+            records = await csvFile.readRecords(file)
+        }
+
+        if (!file.trim())
             this.error = 'Empty file. Check again csv file location'
-        }
 
-        try {
-            this.tableName(file)
-
-            return records
-        } catch (error) {
-            this.logger.log(error)
-        }
+        return this.removeInvalidRows(records)
     }
 
-    private tableName(file: string): void {
-        this.fileName = path.parse(file)
+    private removeInvalidRows(records: any[]): any[] {
+        return records.map(subArray => subArray.filter(element => element !== undefined))
     }
 
     private async seekExistsTable(queryRunner: QueryRunner): Promise<boolean> {
         try {
-            const table = await queryRunner.query(`SELECT * FROM information_schema.tables WHERE TABLE_NAME = '${this.fileName.name}'`)
+            const table = await queryRunner.query(`SELECT * FROM information_schema.tables WHERE TABLE_NAME = '${this.filePath.name}'`)
             return Boolean(table.lenght)
         } catch (error) {
             this.error = `${error}`
@@ -72,7 +78,7 @@ export class Main {
     private async createTable(queryRunner: QueryRunner) {
         try {
             const cloumnsDefinition = this.csvDataFile.getQueryString()
-            await queryRunner.query(`CREATE TABLE IF NOT EXISTS ${this.fileName.name} (${cloumnsDefinition})`)
+            await queryRunner.query(`CREATE TABLE IF NOT EXISTS ${this.filePath.name} (${cloumnsDefinition})`)
         } catch (error) {
             this.logger.log(error)
         }
@@ -83,11 +89,11 @@ export class Main {
             for (const r of this.csvDataFile.getRecords()) {
                 try {
                     await queryRunner.query(`
-                        INSERT INTO ${this.fileName.name} (${this.csvDataFile.getColumns()})
+                        INSERT INTO ${this.filePath.name} (${this.csvDataFile.getColumns()})
                         VALUES (${r.map(value => (typeof value == 'string' && value.includes("'") ? `'${value.replace(/'/g, '')}'` : `'${value}'`)).join(', ')}
-                        );`)
+                        )`)
                 } catch (error) {
-                    throw Error(`An error occurred while saving new ${this.fileName.name} [${JSON.stringify(r.join(', '))}]`)
+                    throw Error(`An error occurred while saving new ${this.filePath.name} [${JSON.stringify(r.join(', '))}]`)
                 }
 
             }

@@ -10,6 +10,11 @@ export class ColumnDefinition {
     }
 
     private columnsDefinition(csv: string[][]): void {
-        this.columns = csv[0]
+        const cols = csv[0].map(e => {
+            if (e.includes(' ')) return e.replace(/\s+/g, '_').toLowerCase()
+
+            else return e
+        })
+        this.columns = cols
     }
 }

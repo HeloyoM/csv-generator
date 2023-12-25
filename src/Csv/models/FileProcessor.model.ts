@@ -3,7 +3,7 @@ import { ColumnDefinition } from "./ColumnsDefinition.model"
 import { QueryStringGenerator } from "./QueryStringGenerator.model"
 import { RecordsDefinition } from "./RecordsDefinition.model"
 
-export class FileProcessor {
+export class FileProcessor { // 0.8 Instablilty
     private columnDefinition: ColumnDefinition
     private recordsDefinition: RecordsDefinition
     private queryStringGenerator: IQueryStringGenerator

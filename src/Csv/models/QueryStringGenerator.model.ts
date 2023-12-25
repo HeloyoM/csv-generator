@@ -1,7 +1,7 @@
 import { computeMySQLCloumns } from "../../utils/datatype"
 import { IQueryStringGenerator } from "../interface/IQueryString.interface"
 
-export class QueryStringGenerator implements IQueryStringGenerator {
+export class QueryStringGenerator implements IQueryStringGenerator { // 0.5 Instabllity 
     private queryString: string
 
     constructor() { }

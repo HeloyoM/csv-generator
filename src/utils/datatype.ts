@@ -2,7 +2,6 @@ import RegExpUUID from "./RegExp"
 
 export function computeMySQLCloumns(cloumns: string[], data: any[]) {
     const columnsStringArray: string[] = []
-
     cloumns.reduce((acc, crr: string, index: number) => {
         const d = data[index]
         let datatype = ''

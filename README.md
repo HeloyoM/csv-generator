@@ -19,7 +19,7 @@
     <p>- SOLID priciples in the logic layer</p>
     <p>- DAG priciple</p> 
     <p>and all with clean and readable code that every child can understand</p><img src="https://storage.googleapis.com/sticker-prod/NFYUpmqjfGbOHVAUydxk/cover.thumb256.png" width=40 height=40/>
-
+<p align="left">Youtube:https://youtu.be/uZED_yDgtsU</p>
   [![YToube video](https://www.youtube.com/watch?v=Jwo1TUFAEsA)](https://github.com/HeloyoM/csv-transporter/assets/57059886/636137ea-7e9c-4ebe-8728-b88c13cf1817)
   
   ## Architecture - the flow of control and appling architecture principles
